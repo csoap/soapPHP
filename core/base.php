@@ -48,8 +48,16 @@ class base
     public function display($file){
         $file = API.'/views/'. $file;
         if (is_file($file)){
-            extract($this->assign);
-            include $file;
+
+            $loader = new \Twig\Loader\FilesystemLoader(API . '/views');
+            $twig = new \Twig\Environment($loader, [
+                'cache' => APP_PATH.'/log/twig',
+                'debug' => DEBUG
+            ]);
+            $template = $twig->load('index.html');
+            $template->display($this->assign?$this->assign:"");
+
+
         }
     }
 }
