@@ -7,6 +7,9 @@ class base
     public $assign;
 
     public static function run(){
+        \core\lib\log::init();
+        \core\lib\log::log($_SERVER);
+
         $route = new \core\lib\route();
         $ctrlClass = $route->ctrl;
         $action = $route->action;
@@ -16,6 +19,7 @@ class base
             include $ctrlFile;
             $ctrl = new $ctrlClass();
             $ctrl->$action();
+            \core\lib\log::log('ctrl: '. $route->ctrl.'    action: '. $action);
 
         }else{
             throw new \Exception('找不到控制器' . $ctrlClass);

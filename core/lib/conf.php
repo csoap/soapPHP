@@ -8,7 +8,7 @@ class conf
     public static function get($name, $file)
     {
         if (isset(self::$conf[$file])){
-            return self::conf[$name];
+            return self::$conf[$file][$name];
         }else{
             $path = APP_PATH . '/core/config/' . $file . '.php';
             if(is_file($path)){
@@ -27,7 +27,7 @@ class conf
 
     public static function all($file){
         if (isset(self::$conf[$file])){
-            return self::conf;
+            return self::$conf;
         }else{
             $path = APP_PATH . '/core/config/' . $file . '.php';
             if(is_file($path)){
