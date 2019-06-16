@@ -1,15 +1,13 @@
 <?php
 namespace api\ctrl;
+use core\lib\model;
+
 class indexCtrl extends \core\base
 {
     public function index(){
 
-        $temp =  \core\lib\conf::get('CTRL', 'route');
-        $model = new \core\lib\model();
-        $sql = "select * from test";
-        $res = $model->query($sql);
-
-        $this->assign('data', '222');
-        $this->display('index.html');
+        $model = new \api\model\testModel();
+        $res = $model->list();
+        dump($res);
     }
 }

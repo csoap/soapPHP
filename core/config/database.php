@@ -1,6 +1,8 @@
 <?php
 return array(
-    'DSN'       => 'mysql:host=localhost;dbname=ssc',
-    'USERNAME'  => 'root',
-    'PASSWD'    => 'root'
+    'database_type' => 'mysql',
+    'database_name' => 'ssc',
+    'server' => 'localhost',
+    'username' => 'root',
+    'password' => 'root',
 );
